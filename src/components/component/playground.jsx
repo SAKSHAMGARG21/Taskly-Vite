@@ -189,7 +189,7 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
                                 )}
                             >
                                 <ClockIcon className="mr-2 h-4 w-4" />
-                                {hour !== null && minute !== null && AMPM != null ? `${hour}:${minute} ${AMPM}` : "Pick a Time"}
+                                {hour !== null && minute !== null && AMPM != null ? `${selectedHour}:${selectedMinute} ${selectedAMPM}` : "Pick a Time"}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0">
