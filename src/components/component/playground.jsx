@@ -49,8 +49,17 @@ export function Playground() {
     const handleAddTodo = () => {
         if (newTodo.title.trim() !== "") {
             setTodos([...todos, newTodo])
-            setNewTodo({ time: "", title: "", description: "" })
+            setNewTodo({
+                time: `${hour}:${minute} ${AMPM} - ${format(date, "PPP")}`,
+                title: "",
+                description: "",
+            })
+            toast({
+                title: "Todo Added",
+                description: "Your todo has been added",
+            });
         }
+
     }
 
     const handleDeleteTodo = (index) => {
