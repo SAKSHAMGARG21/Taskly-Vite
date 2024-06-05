@@ -44,6 +44,7 @@ export function Playground() {
         time: "",
         title: "",
         description: "",
+        completed: null,
     })
 
     const handleAddTodo = () => {
@@ -95,12 +96,14 @@ export function Playground() {
             const newTodoItem = {
                 ...newTodo,
                 time: todoTime,
+                completed: false,
             };
             setTodos([...todos, newTodoItem]);
             setNewTodo({
                 time: "",
                 title: "",
                 description: "",
+                completed: false,
             });
             toast({
                 title: "Todo Added",
@@ -110,8 +113,8 @@ export function Playground() {
     }
 
     const handleDeleteTodo = (index) => {
-        const updatedTodos = [...todos]
-        updatedTodos.splice(index, 1)
+        const updatedTodos = [...todos];
+        updatedTodos.splice(index, 1);
         setTodos(updatedTodos)
         toast({
             title: "Todo Deleted",
@@ -120,10 +123,20 @@ export function Playground() {
     }
 
     const handleToggleTodo = (index) => {
-        const updatedTodos = [...todos]
-        updatedTodos[index].completed = !updatedTodos[index].completed
+        const updatedTodos = [...todos];
+        updatedTodos[index].completed = !updatedTodos[index].completed;
         setTodos(updatedTodos);
+        console.log("up", updatedTodos);
+        toast({
+            title: "Todo Updated",
+            description: "Your todo has been updated successfully",
+        });
     }
+
+    // on any change in todos, print it
+    useEffect(() => {
+        console.log(todos);
+    }, [todos]);
 
     return (
         (<Card className="max-w-md mx-auto p-6 space-y-6 mt-10">
@@ -163,7 +176,7 @@ export function Playground() {
                                 className={`grid grid-cols-[auto_1fr_auto] items-center gap-4 ${todo.completed ? "opacity-50 line-through text-gray-500 dark:text-gray-400" : ""
                                     }`}
                             >
-                                <Checkbox checked={todo.completed} onChange={() => handleToggleTodo(index)} />
+                                <Checkbox checked={todo.completed} onClick={() => handleToggleTodo(index)} />
                                 <div className="space-y-1">
                                     <div className="font-medium truncate max-w-[230px]">{todo.title}</div>
                                     <div className="text-gray-500 dark:text-gray-400">
