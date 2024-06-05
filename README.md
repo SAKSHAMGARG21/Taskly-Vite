@@ -1,8 +1,8 @@
-# CalcWhiz (React + Vite)
+# Taskly (React + Vite)
 
 ## Introduction
 
-This is a basic Calculator that allows for 4 basic operations (Addition, Subtraction, Multiplication and Division). It is made using Tailwind CSS and React.
+This is a basic to-do list app that allows for adding tasks into the list, marking them as done and deleting them. No databases were used in this project, the main focus was the UI design.
 
 ## UI Library
 
