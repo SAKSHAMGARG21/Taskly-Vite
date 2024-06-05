@@ -51,28 +51,28 @@ export function Playground() {
         if (date === null || date === undefined) {
             toast({
                 title: "Date is Empty",
-                description: "Please select a date",
+                description: "Please select a date before adding todo",
             });
             return;
         }
         else if (hour === null || hour === undefined) {
             toast({
                 title: "Hour is Empty",
-                description: "Please select a hour",
+                description: "Please select a hour before adding todo",
             });
             return;
         }
         else if (minute === null || minute === undefined) {
             toast({
                 title: "Minute is Empty",
-                description: "Please select a minute",
+                description: "Please select a minute before adding todo",
             });
             return;
         }
         else if (AMPM === null || AMPM === undefined) {
             toast({
                 title: "AM/PM is Empty",
-                description: "Please select AM/PM",
+                description: "Please select AM/PM before adding todo",
             });
             return;
         }
@@ -92,7 +92,7 @@ export function Playground() {
             });
             toast({
                 title: "Todo Added",
-                description: "Your todo has been added",
+                description: "Your todo has been added successfully",
             });
         }
     }
@@ -103,7 +103,7 @@ export function Playground() {
         setTodos(updatedTodos)
         toast({
             title: "Todo Deleted",
-            description: "Your todo has been deleted",
+            description: "Your todo has been deleted successfully",
         });
     }
 
