@@ -47,6 +47,29 @@ export function Playground() {
     })
 
     const handleAddTodo = () => {
+
+        if (title === "" || title === null || title === undefined) {
+            toast({
+                title: "Title is Empty",
+                description: "Please enter a title",
+            });
+            return;
+        }
+        else if (description === "" || description === null || description === undefined) {
+            toast({
+                title: "Description is Empty",
+                description: "Please enter a description",
+            });
+            return;
+        }
+        else if (date === null || date === undefined) {
+            toast({
+                title: "Date is Empty",
+                description: "Please select a date",
+            });
+            return;
+        }
+
         if (newTodo.title.trim() !== "") {
             const todoTime = `${hour}:${minute} ${AMPM} - ${format(date, "PPP")}`;
             const newTodoItem = {
@@ -70,6 +93,10 @@ export function Playground() {
         const updatedTodos = [...todos]
         updatedTodos.splice(index, 1)
         setTodos(updatedTodos)
+        toast({
+            title: "Todo Deleted",
+            description: "Your todo has been deleted",
+        });
     }
 
     const handleToggleTodo = (index) => {
@@ -79,7 +106,7 @@ export function Playground() {
     }
 
     return (
-        (<Card className="max-w-md mx-auto p-6 space-y-6 mt-16">
+        (<Card className="max-w-md mx-auto p-6 space-y-6 mt-10">
 
             <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
                 <div className="grid grid-cols-[1fr_auto] gap-4">
@@ -100,7 +127,9 @@ export function Playground() {
                 <Button onClick={handleAddTodo}>Add Todo</Button>
             </Card>
             <Toaster />
-            <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
+            <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4 overflow-auto max-h-[34vh]"
+                style={{ scrollbarWidth: "none" }}
+            >
                 {todos.length === 0 || todos === null || todos === undefined ? (
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <NotFoundIcon className="w-12 h-12 text-gray-500 dark:text-gray-400" />
@@ -116,12 +145,14 @@ export function Playground() {
                             >
                                 <Checkbox checked={todo.completed} onChange={() => handleToggleTodo(index)} />
                                 <div className="space-y-1">
-                                    <div className="font-medium">{todo.title}</div>
+                                    <div className="font-medium truncate max-w-[230px]">{todo.title}</div>
                                     <div className="text-gray-500 dark:text-gray-400">
-                                        <div>
+                                        <div className="truncate max-w-[210px]"
+                                        >
                                             {todo.time}
                                         </div>
-                                        <div>
+                                        <div className="truncate max-w-[210px]"
+                                        >
                                             {todo.description}
                                         </div>
                                     </div>
