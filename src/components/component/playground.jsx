@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/select"
 import { useToast } from "@/components/ui/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import Filter from 'bad-words';
 
 export function Playground() {
 
@@ -86,6 +87,16 @@ export function Playground() {
             toast({
                 title: "AM/PM is Empty",
                 description: "Please select AM/PM before adding todo",
+            });
+            return;
+        }
+
+        // filter words
+        const filter = new Filter();
+        if (filter.isProfane(newTodo.title) || filter.isProfane(newTodo.description)) {
+            toast({
+                title: "Bad Words",
+                description: "Please remove bad words from the title and description",
             });
             return;
         }
