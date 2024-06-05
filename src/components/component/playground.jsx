@@ -153,7 +153,7 @@ export function Playground() {
                 {todos.length === 0 || todos === null || todos === undefined ? (
                     <div className="flex flex-col items-center justify-center space-y-4">
                         <NotFoundIcon className="w-12 h-12 text-gray-500 dark:text-gray-400" />
-                        <text className="text-gray-500 dark:text-gray-400">No Todos Found</text>
+                        <span className="text-gray-500 dark:text-gray-400">No Todos Found</span>
                     </div>
                 ) :
                     (
