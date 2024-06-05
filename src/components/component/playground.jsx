@@ -96,7 +96,7 @@ export function Playground() {
         if (filter.isProfane(newTodo.title) || filter.isProfane(newTodo.description)) {
             toast({
                 title: "Bad Words",
-                description: "Please remove bad words from the title and description",
+                description: "Please remove bad words from the title and/or description",
             });
             return;
         }
