@@ -122,7 +122,7 @@ export function Playground() {
     const handleToggleTodo = (index) => {
         const updatedTodos = [...todos]
         updatedTodos[index].completed = !updatedTodos[index].completed
-        setTodos(updatedTodos)
+        setTodos(updatedTodos);
     }
 
     return (
