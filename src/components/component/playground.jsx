@@ -169,7 +169,7 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
                 >
                     <span className="text-gray-500 dark:text-gray-400"
                     >
-                        Select Time and Date
+                        {hour}:{minute} {AMPM} - {format(date, "PPP")}
                     </span>
                 </Button>
             </DialogTrigger>
