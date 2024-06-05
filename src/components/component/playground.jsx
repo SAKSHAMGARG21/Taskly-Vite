@@ -167,11 +167,11 @@ export function Playground() {
                                 <div className="space-y-1">
                                     <div className="font-medium truncate max-w-[230px]">{todo.title}</div>
                                     <div className="text-gray-500 dark:text-gray-400">
-                                        <div className="truncate max-w-[210px]"
+                                        <div className="truncate max-w-[210px] text-sm"
                                         >
                                             {todo.time}
                                         </div>
-                                        <div className="truncate max-w-[210px]"
+                                        <div className="truncate max-w-[210px] text-sm"
                                         >
                                             {todo.description}
                                         </div>
