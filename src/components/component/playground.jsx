@@ -48,29 +48,37 @@ export function Playground() {
 
     const handleAddTodo = () => {
 
-        if (title === "" || title === null || title === undefined) {
-            toast({
-                title: "Title is Empty",
-                description: "Please enter a title",
-            });
-            return;
-        }
-        else if (description === "" || description === null || description === undefined) {
-            toast({
-                title: "Description is Empty",
-                description: "Please enter a description",
-            });
-            return;
-        }
-        else if (date === null || date === undefined) {
+        if (date === null || date === undefined) {
             toast({
                 title: "Date is Empty",
                 description: "Please select a date",
             });
             return;
         }
+        else if (hour === null || hour === undefined) {
+            toast({
+                title: "Hour is Empty",
+                description: "Please select a hour",
+            });
+            return;
+        }
+        else if (minute === null || minute === undefined) {
+            toast({
+                title: "Minute is Empty",
+                description: "Please select a minute",
+            });
+            return;
+        }
+        else if (AMPM === null || AMPM === undefined) {
+            toast({
+                title: "AM/PM is Empty",
+                description: "Please select AM/PM",
+            });
+            return;
+        }
 
         if (newTodo.title.trim() !== "") {
+
             const todoTime = `${hour}:${minute} ${AMPM} - ${format(date, "PPP")}`;
             const newTodoItem = {
                 ...newTodo,
