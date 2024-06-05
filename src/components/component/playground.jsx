@@ -48,7 +48,19 @@ export function Playground() {
 
     const handleAddTodo = () => {
 
-        if (date === null || date === undefined) {
+        if (!newTodo.title || newTodo.title.trim() === "") {
+            toast({
+                title: "Title is Empty",
+                description: "Please enter a title for the todo",
+            });
+            return;
+        } else if (!newTodo.description || newTodo.description.trim() === "") {
+            toast({
+                title: "Description is Empty",
+                description: "Please enter a description for the todo",
+            });
+            return;
+        } else if (date === null || date === undefined) {
             toast({
                 title: "Date is Empty",
                 description: "Please select a date before adding todo",
