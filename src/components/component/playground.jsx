@@ -23,8 +23,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
-
+import { useToast } from "@/components/ui/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export function Playground() {
 
@@ -37,6 +37,8 @@ export function Playground() {
     const [AMPM, setAMPM] = useState("AM");
 
     const [todos, setTodos] = useState([]);
+
+    const { toast } = useToast();
 
     const [newTodo, setNewTodo] = useState({
         time: "",
@@ -65,6 +67,8 @@ export function Playground() {
 
     return (
         (<Card className="max-w-md mx-auto p-6 space-y-6 mt-16">
+            <Toaster className="h-1"
+            />
             <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
                 <div className="grid grid-cols-[1fr_auto] gap-4">
                     <Popup date={date} hour={hour} minute={minute} AMPM={AMPM} setDate={setDate} setHour={setHour} setMinute={setMinute} setAMPM={setAMPM} />
@@ -111,6 +115,8 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
 
     const [open, setOpen] = useState(false);
 
+    const { toast } = useToast();
+
     const [selectedDate, setSelectedDate] = useState(date);
     const [selectedHour, setSelectedHour] = useState(hour);
     const [selectedMinute, setSelectedMinute] = useState(minute);
@@ -125,6 +131,11 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
 
     const CancelClicked = () => {
         setOpen(false);
+
+        toast({
+            title: "Cancelled",
+            description: "All changes have been cancelled",
+        });
     }
 
     const ConfirmClicked = () => {
@@ -134,6 +145,12 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
         setDate(selectedDate);
 
         setOpen(false);
+
+        toast({
+            title: "Selected Time and Date",
+            description: "Time and Date has been selected",
+        });
+
     }
 
 
