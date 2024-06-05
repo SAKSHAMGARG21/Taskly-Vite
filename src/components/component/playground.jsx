@@ -88,24 +88,31 @@ export function Playground() {
             </Card>
             <Toaster />
             <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
-                {todos.map((todo, index) => (
-                    <div
-                        key={index}
-                        className={`grid grid-cols-[auto_1fr_auto] items-center gap-4 ${todo.completed ? "opacity-50 line-through text-gray-500 dark:text-gray-400" : ""
-                            }`}
-                    >
-                        <Checkbox checked={todo.completed} onChange={() => handleToggleTodo(index)} />
-                        <div className="space-y-1">
-                            <div className="font-medium">{todo.title}</div>
-                            <div className="text-gray-500 dark:text-gray-400">
-                                {todo.time} - {todo.description}
-                            </div>
-                        </div>
-                        <Button variant="ghost" size="icon" onClick={() => handleDeleteTodo(index)}>
-                            <Trash2Icon className="w-5 h-5" />
-                        </Button>
+                {todos.length === 0 || todos === null || todos === undefined ? (
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                        <NotFoundIcon className="w-12 h-12 text-gray-500 dark:text-gray-400" />
+                        <text className="text-gray-500 dark:text-gray-400">No Todos Found</text>
                     </div>
-                ))}
+                ) :
+                    (
+                        todos.map((todo, index) => (
+                            <div
+                                key={index}
+                                className={`grid grid-cols-[auto_1fr_auto] items-center gap-4 ${todo.completed ? "opacity-50 line-through text-gray-500 dark:text-gray-400" : ""
+                                    }`}
+                            >
+                                <Checkbox checked={todo.completed} onChange={() => handleToggleTodo(index)} />
+                                <div className="space-y-1">
+                                    <div className="font-medium">{todo.title}</div>
+                                    <div className="text-gray-500 dark:text-gray-400">
+                                        {todo.time} - {todo.description}
+                                    </div>
+                                </div>
+                                <Button variant="ghost" size="icon" onClick={() => handleDeleteTodo(index)}>
+                                    <Trash2Icon className="w-5 h-5" />
+                                </Button>
+                            </div>
+                        )))}
             </Card>
         </Card>)
     );
@@ -160,10 +167,10 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
             <DialogTrigger asChild>
                 <Button variant="outline" className="w-full" onClick={buttonClicked}
                 >
-                    <text className="text-gray-500 dark:text-gray-400"
+                    <span className="text-gray-500 dark:text-gray-400"
                     >
                         Select Time and Date
-                    </text>
+                    </span>
                 </Button>
             </DialogTrigger>
             <DialogContent>
