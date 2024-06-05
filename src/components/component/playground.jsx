@@ -266,13 +266,13 @@ function Popup({ date, hour, minute, AMPM, setDate, setHour, setMinute, setAMPM 
                                 )}
                             >
                                 <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                {selectedDate ? format(selectedDate, "PPP") : <span>Pick a date</span>}
                             </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0">
                             <Calendar
                                 mode="single"
-                                selected={date}
+                                selected={selectedDate}
                                 onSelect={setSelectedDate}
                                 initialFocus
                             />
