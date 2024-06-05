@@ -67,8 +67,7 @@ export function Playground() {
 
     return (
         (<Card className="max-w-md mx-auto p-6 space-y-6 mt-16">
-            <Toaster className="h-1"
-            />
+
             <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
                 <div className="grid grid-cols-[1fr_auto] gap-4">
                     <Popup date={date} hour={hour} minute={minute} AMPM={AMPM} setDate={setDate} setHour={setHour} setMinute={setMinute} setAMPM={setAMPM} />
@@ -87,6 +86,7 @@ export function Playground() {
                 />
                 <Button onClick={handleAddTodo}>Add Todo</Button>
             </Card>
+            <Toaster />
             <Card className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
                 {todos.map((todo, index) => (
                     <div
