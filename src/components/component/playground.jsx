@@ -48,18 +48,22 @@ export function Playground() {
 
     const handleAddTodo = () => {
         if (newTodo.title.trim() !== "") {
-            setTodos([...todos, newTodo])
+            const todoTime = `${hour}:${minute} ${AMPM} - ${format(date, "PPP")}`;
+            const newTodoItem = {
+                ...newTodo,
+                time: todoTime,
+            };
+            setTodos([...todos, newTodoItem]);
             setNewTodo({
-                time: `${hour}:${minute} ${AMPM} - ${format(date, "PPP")}`,
+                time: "",
                 title: "",
                 description: "",
-            })
+            });
             toast({
                 title: "Todo Added",
                 description: "Your todo has been added",
             });
         }
-
     }
 
     const handleDeleteTodo = (index) => {
@@ -114,7 +118,12 @@ export function Playground() {
                                 <div className="space-y-1">
                                     <div className="font-medium">{todo.title}</div>
                                     <div className="text-gray-500 dark:text-gray-400">
-                                        {todo.time} - {todo.description}
+                                        <div>
+                                            {todo.time}
+                                        </div>
+                                        <div>
+                                            {todo.description}
+                                        </div>
                                     </div>
                                 </div>
                                 <Button variant="ghost" size="icon" onClick={() => handleDeleteTodo(index)}>
