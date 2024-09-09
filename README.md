@@ -21,7 +21,6 @@ This project was deployed to Github Pages and can be tested there. No servers or
 ![Screenshot 2024-06-05 203605](https://github.com/HasanYahya101/Taskly-Vite/assets/118683092/98afdcad-2760-42e0-8038-f4f9d28fdb85)
 ![Screenshot 2024-06-05 203620](https://github.com/HasanYahya101/Taskly-Vite/assets/118683092/e6e49606-0c20-408a-a7c9-43ca1ce002f0)
 
-
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
